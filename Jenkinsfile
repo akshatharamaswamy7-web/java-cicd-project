@@ -9,7 +9,9 @@ pipeline {
     }
 
     environment {
-        APP_DIR = '/opt/java-cicd-app'
+        JAVA_HOME = '/usr/lib/jvm/java-21-openjdk-amd64/bin/javac'
+        MAVEN_HOME = '/usr/share/maven'
+        PATH = "${JAVA_HOME}/bin:${MAVEN_HOME}/bin:${env.PATH}"
     }
 
     options {
