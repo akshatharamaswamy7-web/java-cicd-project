@@ -26,6 +26,19 @@ pipeline {
                 checkout scm
             }
         }
+        
+        stage('Environment Check') {
+            steps {
+                 sh '''
+                    echo "JAVA_HOME=$JAVA_HOME"
+                    echo "MAVEN_HOME=$MAVEN_HOME"
+                    which java
+                    which mvn
+                    java -version
+                    mvn -version
+                    '''
+            }
+        }
 
         stage('Build and Test') {
             steps {
